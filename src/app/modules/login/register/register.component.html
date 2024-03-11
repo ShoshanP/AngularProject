@@ -1,1 +1,37 @@
-<p>register works!</p>
+
+<div class="container">
+	<div class="screen">
+		<div class="screen__content">
+			<form [formGroup]="registerForm" class="login">
+                <div class="login__field">
+					<i class="login__icon fas fa-lock"></i>
+					<input formControlName="name"  type="text" class="login__input" placeholder="User Name">
+                    
+				</div>
+				<div class="login__field">
+					<i class="login__icon fas fa-user"></i>
+					<input matInput  [formControl]="email" type="text" class="login__input" placeholder="User Email">
+                    <br>
+                    <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+				</div>
+				<div class="login__field">
+					<i class="login__icon fas fa-lock"></i>
+					<input formControlName="password" matInput [type]="hide ? 'password' : 'text'" type="password" class="login__input" placeholder="Password">
+                    
+				</div>
+                
+				<button type="submit" mat-button (click)="addUser()" class="button login__submit">
+					<span class="button__text">Sign Up</span>
+					<i class="button__icon fas fa-chevron-right"></i>
+				</button>				
+			</form>
+			
+		</div>
+		<div class="screen__background">
+			<span class="screen__background__shape screen__background__shape4"></span>
+			<span class="screen__background__shape screen__background__shape3"></span>		
+			<span class="screen__background__shape screen__background__shape2"></span>
+			<span class="screen__background__shape screen__background__shape1"></span>
+		</div>		
+	</div>
+</div>

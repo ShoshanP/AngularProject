@@ -5,4 +5,5 @@ export class Lecture{
     address: String;
     mail: String;
     password: String;
+    
 }

@@ -1,1 +1,58 @@
-<p>login works!</p>
+<!-- <br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<mat-card class="login-card">
+    <form [formGroup]="loginForm">
+        <mat-card-title>enter your email and password to login:</mat-card-title>
+        <div class="container">
+            
+            <mat-form-field>
+                <mat-label>Enter your email</mat-label>
+                <input matInput placeholder="pat@example.com" [formControl]="email" required>
+                <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Enter your password</mat-label>
+                <input formControlName="password" matInput [type]="hide ? 'password' : 'text'">
+                <button id="hide-icon" mat-icon-button matSuffix (click)="hide = !hide"
+                    [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+            </mat-form-field>
+            <button type="submit" mat-button color="accent" (click)="checkUser()">submit</button>
+        </div>
+    </form>
+</mat-card> -->
+<div class="container">
+	<div class="screen">
+		<div class="screen__content">
+			<form [formGroup]="loginForm" class="login">
+				<div class="login__field">
+					<i class="login__icon fas fa-user"></i>
+					<input matInput  [formControl]="email" type="text" class="login__input" placeholder="User Email">
+                    <br>
+                    <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+				</div>
+				<div class="login__field">
+					<i class="login__icon fas fa-lock"></i>
+					<input formControlName="password" matInput [type]="hide ? 'password' : 'text'" type="password" class="login__input" placeholder="Password">
+                    
+				</div>
+				<button type="submit" mat-button (click)="checkUser()" class="button login__submit">
+					<span class="button__text">Log In Now</span>
+					<i class="button__icon fas fa-chevron-right"></i>
+				</button>				
+			</form>
+			
+		</div>
+		<div class="screen__background">
+			<span class="screen__background__shape screen__background__shape4"></span>
+			<span class="screen__background__shape screen__background__shape3"></span>		
+			<span class="screen__background__shape screen__background__shape2"></span>
+			<span class="screen__background__shape screen__background__shape1"></span>
+		</div>		
+	</div>
+</div>

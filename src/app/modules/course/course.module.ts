@@ -17,6 +17,7 @@ import { EditCourseComponent } from './edit-course/edit-course.component';
   imports: [
     CommonModule
   ],
+  exports: [AllCoursesComponent,AddCourseComponent],
   providers:[]
 })
 export class CourseModule { }
