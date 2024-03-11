@@ -1,1 +1,20 @@
-<p>course-details works!</p>
+<mat-card class="example-card">
+    <mat-card-header>
+      <div mat-card-avatar class="icon-header-image"  [ngStyle]="{ 'background-image': 'url(' + myCourse.category.icon + ')' }"></div>
+      <mat-card-title>{{myCourse?.name}}</mat-card-title>
+      <mat-card-subtitle>{{myCourse?.category.name}}</mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image src="{{myCourse?.image}}" alt="Photo of a Shiba Inu">
+    <mat-card-content>
+  start date: {{myCourse?.start}}
+  <ul>
+    <li *ngFor="let topic of sylabus">
+        <mat-icon>book</mat-icon>
+        {{ topic }}</li>
+  </ul>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button>LIKE</button>
+      <button mat-button>SHARE</button>
+    </mat-card-actions>
+  </mat-card>
