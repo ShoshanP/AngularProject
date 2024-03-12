@@ -1,12 +1,12 @@
 
-enum Study
-{
-    Online,
-    Offline,
-    Hybrid
+enum Study {
+  Online,
+  Offline,
+  Hybrid
 }
 
 import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
 import { Course } from 'src/app/models/course.model';
 @Component({
   selector: 'app-small-course-details',
@@ -16,6 +16,13 @@ import { Course } from 'src/app/models/course.model';
 export class SmallCourseDetailsComponent {
   @Input()
   myCourse: Course;
+  /**
+   *
+   */
+  constructor(private _route: Router) {
+
+
+  }
 
   getCourseTypeDescription(type: number): string {
     switch (type) {
@@ -28,5 +35,9 @@ export class SmallCourseDetailsComponent {
       default:
         return 'Unknown';
     }
+  }
+  showAllDetails() {
+ 
+    this._route.navigate([`/course/${this.myCourse?.id}`]);
   }
 }

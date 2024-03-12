@@ -21,13 +21,13 @@ export class CourseDetailsComponent {
   courseId:number;
   myCourse;
   sylabus:string[];
-
+isLecture=localStorage.getItem('isLecture');
   ngOnInit(): void {
     
   this.courseId= +this._route.snapshot.paramMap.get('id');
   this.myCourse=this.getCourseDetails(this.courseId);
   console.log("course",this.myCourse)
-  this.sylabus=this.myCourse.syllabus;
+  this.sylabus=this.myCourse?.syllabus;
   }
 
 
