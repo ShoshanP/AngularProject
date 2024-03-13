@@ -10,6 +10,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Course } from 'src/app/models/course.model';
 import { CourseService } from 'src/app/services/course.service';
 import { UserService } from 'src/app/services/user.service';
+import { MatDialog } from '@angular/material/dialog';
+import { EditCourseComponent } from '../edit-course/edit-course.component';
 
 @Component({
   selector: 'app-course-details',
@@ -35,7 +37,7 @@ isLecture=localStorage.getItem('isLecture');
   /**
    *
    */
-  constructor(private _route: ActivatedRoute, private _courseService: CourseService) {
+  constructor(private _route: ActivatedRoute,private _routeNavigate:Router, private _courseService: CourseService,public dialog: MatDialog) {
 
 
   }
@@ -64,7 +66,17 @@ isLecture=localStorage.getItem('isLecture');
       }
     );
     console.log("course after",this.myCourse)
-    
-
   }
-}
+  editCourse(){
+    const dialogRef = this.dialog.open(EditCourseComponent, {
+      data: {myCourse: this.myCourse},
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.myCourse = result;
+    });
+    console.log("click",this.myCourse)
+  }
+  }
+

@@ -1,1 +1,59 @@
-<p>edit-course works!</p>
+<!-- <h2 mat-dialog-title>Hi {{data.name}}</h2>
+<mat-dialog-content>
+  <p>What's your favorite animal?</p>
+  <mat-form-field>
+    <mat-label>Favorite Animal</mat-label>
+    <input matInput [(ngModel)]="data">
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">No Thanks</button>
+  <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Ok</button>
+</mat-dialog-actions> -->
+<form [formGroup]="editCourseForm" (submit)="editCourse">
+
+    <label>Course Name</label>
+    <mat-form-field>
+        <input matInput placeholder="Course Name" formControlName="name">
+    </mat-form-field>
+    <label>Select course category</label>
+
+
+    <select formControlName="category">
+        <option [value]="category.id" *ngFor="let category of categories">
+            {{category.name}}
+        </option>
+    </select>
+
+
+    <label>Start Date</label>
+    <mat-form-field>
+        <input type="datetime-local" matInput placeholder="Start Date" formControlName="startDate">
+    </mat-form-field>
+
+   
+
+    <label id="example-radio-group-label">The way of learning</label>
+    <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" formControlName="study">
+
+        <mat-radio-button *ngFor="let study of Study" class="example-radio-button"
+            [value]="study">{{study}}</mat-radio-button>
+
+    </mat-radio-group>
+
+    <div *ngFor="let syl of data.myCourse.syllabus; let i = index">
+        
+        <label *ngIf="editCourseForm.get('input' + i)" for="input{{ i }}">subject {{ i + 1 }}</label>
+
+        <input *ngIf="editCourseForm.get('input' + i)" type="text"  id="input{{ i }}" name="input{{ i }}" formControlName="input{{ i }}" (input)="onInputBlur('input' + i)">
+     
+    </div>
+
+
+
+    <label>Link to an image</label>
+    <mat-form-field>
+        <input matInput placeholder="Image" formControlName="image">
+    </mat-form-field>
+    <button mat-raised-button color="primary" type="submit">Save</button>
+</form>

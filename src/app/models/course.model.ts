@@ -1,11 +1,19 @@
-export class Course{
+import { Category } from "./category.model";
+
+enum Study {
+    Online,
+    Offline,
+    Hybrid
+}
+export class Course {
+
     id: Number;
-    kode:Number;
-    nameCourse: String;
-    kodeKategory: Number;
-    amountLessons: Number;
-    startCourseDate: String;
+    kode: Number;
+    name: String;
+    category: Category;
+    countOfLessons: Number;
+    startDate: String;
     syllabusArr: String[];
-    wayLearning: String;
-    image: String ; 
+    study: Study;
+    image: String;
 }

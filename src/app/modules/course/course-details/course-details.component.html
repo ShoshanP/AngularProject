@@ -14,6 +14,6 @@
   </ul>
     </mat-card-content>
     <mat-card-actions>
-     <button *ngIf="isLecture">edit course</button>
+     <button *ngIf="isLecture" (click)="editCourse()">edit course</button>
     </mat-card-actions>
   </mat-card>

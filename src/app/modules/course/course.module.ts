@@ -11,6 +11,23 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import { SmallCourseDetailsComponent } from './small-course-details/small-course-details.component';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
+import {
+  MatDialog,
+  MAT_DIALOG_DATA,
+  MatDialogRef,
+  MatDialogTitle,
+  MatDialogContent,
+  MatDialogActions,
+  MatDialogClose,
+  MatDialogModule,
+} from '@angular/material/dialog';
+
+import {FormBuilder, FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { LectureService } from 'src/app/services/lecture.service';
+import { MatPseudoCheckboxModule } from '@angular/material/core';
+import {MatRadioModule} from '@angular/material/radio';
 
 
 @NgModule({
@@ -23,9 +40,18 @@ import { MatIconModule } from '@angular/material/icon';
   ],
   imports: [
     CommonModule,
-    MatCardModule, MatButtonModule, MatGridListModule,MatIconModule
+    MatCardModule, MatButtonModule, MatGridListModule,MatIconModule,
+    MatFormFieldModule,
+    MatInputModule,
+    FormsModule,
+    ReactiveFormsModule,
+  MatDialogModule,
+  MatPseudoCheckboxModule,
+  MatCardModule, FormsModule,
+  MatRadioModule
   ],
-  exports: [AllCoursesComponent,AddCourseComponent,CourseDetailsComponent],
-  providers:[CourseService,Router]
+  exports: [AllCoursesComponent,AddCourseComponent,CourseDetailsComponent,EditCourseComponent],
+  providers:[CourseService,Router],
+  
 })
 export class CourseModule { }

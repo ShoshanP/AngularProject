@@ -6,6 +6,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatTabsModule} from '@angular/material/tabs';
 import { LoginModule } from './modules/login/login.module';
+import { UserService } from './services/user.service';
+import { CourseModule } from './modules/course/course.module';
 
 @NgModule({
   declarations: [
@@ -18,9 +20,11 @@ import { LoginModule } from './modules/login/login.module';
     HttpClientModule,
     BrowserAnimationsModule,
     MatTabsModule,
-   LoginModule
+   LoginModule,
+   CourseModule
+  
   ],
-  providers: [],
+  providers: [ UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

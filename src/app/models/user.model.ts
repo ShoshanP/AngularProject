@@ -5,4 +5,11 @@ export class User{
     address: String;
     mail: String;
     password: String;
+    /**
+     *
+     */
+    constructor() {
+        this.name="אורח";
+        
+    }
 }

@@ -9,6 +9,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserService } from 'src/app/services/user.service';
 import {MatCardModule} from '@angular/material/card';
+import { Router } from '@angular/router';
+import { LectureService } from 'src/app/services/lecture.service';
 
 
 @NgModule({
@@ -22,7 +24,7 @@ import {MatCardModule} from '@angular/material/card';
     MatCardModule
   ],
   exports: [LoginComponent,RegisterComponent],
-  providers:[UserService]
+  providers:[UserService,Router,LectureService]
   
 })
 export class LoginModule { }

@@ -6,13 +6,21 @@ import { User } from "../models/user.model";
 @Injectable()
 export class UserService {
   private _baseUrl: string = 'https://localhost:7175/api/User';
-
+  private currentUser: User;
   getUsers(): Observable<User[]> {
     return this._http.get<User[]>(this._baseUrl);
   }
-  addUser(user): Observable<boolean>{
-    console.log("you want to add user: ",user);
-   return this._http.post<boolean>(this._baseUrl,user);
+  addUser(user): Observable<boolean> {
+    console.log("you want to add user: ", user);
+    return this._http.post<boolean>(this._baseUrl, user);
+  }
+
+  getCurrentUser(){
+    return this.currentUser;
+  }
+
+  setCurrentUser(userName){
+
   }
 
 

@@ -30,6 +30,7 @@
 	<div class="screen">
 		<div class="screen__content">
 			<form [formGroup]="loginForm" class="login">
+				<mat-error>{{passwordError}}</mat-error>
 				<div class="login__field">
 					<i class="login__icon fas fa-user"></i>
 					<input matInput  [formControl]="email" type="text" class="login__input" placeholder="User Email">
@@ -41,10 +42,18 @@
 					<input formControlName="password" matInput [type]="hide ? 'password' : 'text'" type="password" class="login__input" placeholder="Password">
                     
 				</div>
+				<div class="login__field">
+					<i class="login__icon fas fa-user"></i>
+					<input *ngIf="lecture" matInput  formControlName="courseName" type="text" class="login__input" placeholder="Course Name">
+                    <br>
+                    <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+				</div>
 				<button type="submit" mat-button (click)="checkUser()" class="button login__submit">
 					<span class="button__text">Log In Now</span>
 					<i class="button__icon fas fa-chevron-right"></i>
-				</button>				
+				</button>
+				<button *ngIf="!lecture" class="button" mat-button (click)="setLectureOption()">login as register</button>
+				<button *ngIf="lecture" class="button" mat-button (click)="setLectureOption()">login as student</button>				
 			</form>
 			
 		</div>

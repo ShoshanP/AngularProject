@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { UserService } from './services/user.service';
+import { User } from './models/user.model';
 
 @Component({
   selector: 'app-root',
@@ -7,11 +9,13 @@ import { Router } from '@angular/router';
   styleUrls: ['./app.component.css'],
  
 })
+@Injectable()
 export class AppComponent {
   title = 'final-project';
   navLinks: any[];
   activeLinkIndex = -1; 
-  constructor(private router: Router) {
+  currentUser:User;
+  constructor(private router: Router, private _userService: UserService) {
     this.navLinks = [
       {
         label: 'home',
@@ -37,6 +41,8 @@ export class AppComponent {
           index: 4
       },
     ];
+
+this.currentUser=_userService.getCurrentUser();
 }
 ngOnInit(): void {
   this.router.events.subscribe((res) => {

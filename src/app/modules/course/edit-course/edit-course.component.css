@@ -1,0 +1,16 @@
+form{
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem;
+    min-width: 400px;
+}
+.example-radio-group {
+    display: flex;
+    flex-direction: row;
+    margin: 15px 0;
+    align-items: flex-start;
+  }
+  
+  .example-radio-button {
+    margin: 5px;
+  }

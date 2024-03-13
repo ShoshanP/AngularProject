@@ -17,7 +17,7 @@ export class RegisterComponent {
    
     let userToAdd = {
       "name": this.registerForm.controls['name'].value,
-      "email": this.registerForm.controls['mail'].value,
+      "mail": this.registerForm.controls['mail'].value,
       "password": this.registerForm.controls['password'].value,
     }
     this._userService.addUser(userToAdd).subscribe(
@@ -39,6 +39,8 @@ export class RegisterComponent {
     return this.email.hasError('email') ? 'Not a valid email' : '';
 
   }
+
+  
   /**
    *
    */
