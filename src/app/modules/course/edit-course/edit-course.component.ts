@@ -68,7 +68,7 @@ export class EditCourseComponent {
     _courseService.getCategories().subscribe(res => {
       this.categories = res;
       console.log(this.categories);
-      
+
     }, err => {
       console.error(err);
     });
@@ -95,12 +95,13 @@ export class EditCourseComponent {
       }
 
       const categoryID = formData.category;
-      const objects=[{id:1},{id:2},{id:3}]
-      const category  = this.categories.find((cat) => {
-       
-       return categoryID==cat.id});
-//console.log(categoryID);
-console.log(category);
+      const objects = [{ id: 1 }, { id: 2 }, { id: 3 }]
+      const category = this.categories.find((cat) => {
+
+        return categoryID == cat.id
+      });
+      //console.log(categoryID);
+      console.log(category);
 
       // Assign the category object to the category field
       if (category) {
@@ -110,30 +111,30 @@ console.log(category);
       }
 
       const syllabus = Object.keys(formData)
-      .filter(key => key.startsWith('input')) // Filter keys starting with 'input'
-      .map(key => formData[key]); // Get values corresponding to filtered keys
-    
-    // Create a new object with the original properties and the 'syllabus' and 'category' fields
-    const newData = {
-      ...formData,
-      syllabus: syllabus,
-    };
+        .filter(key => key.startsWith('input')) // Filter keys starting with 'input'
+        .map(key => formData[key]); // Get values corresponding to filtered keys
 
-    Object.keys(newData).forEach(key => {
-      if (key.startsWith('input')) {
-        delete newData[key];
-      }
-    });
+      // Create a new object with the original properties and the 'syllabus' and 'category' fields
+      const newData = {
+        ...formData,
+        syllabus: syllabus,
+      };
+
+      Object.keys(newData).forEach(key => {
+        if (key.startsWith('input')) {
+          delete newData[key];
+        }
+      });
       console.log('Form data to submit:', newData);
       // Send formData to the server
-      this._courseService.changeCourse(newData,this.data.myCourse.id).subscribe(res=>{
-        console.log("success to change",res);
+      this._courseService.changeCourse(newData, this.data.myCourse.id).subscribe(res => {
+        console.log("success to change", res);
         this._route.navigate([`/courses`]);
         this.dialogRef.close();
-      },err=>{
+      }, err => {
         console.log(err);
-        
-        
+
+
       })
     } else {
       console.error('Form is invalid');
@@ -141,19 +142,42 @@ console.log(category);
   }
 
   onNoClick(): void {
-    console.log(
-    this.data.myCourse.id);
-    
+    console.log("close",
+      this.data.myCourse.id);
     this._route.navigate([`/courses`]);
-    //this.dialogRef.close();
+
+
   }
 
-  onInputBlur(controlName: string, index: number) {
-    const control = this.editCourseForm.get(controlName) as FormArray;
-    const currentControl = control.at(index) as FormControl;
-    if (!currentControl.value.trim()) {
-      // If input becomes empty, remove the control from the form array
-      control.removeAt(index);
+  onInputBlur(event: any, index: number) {
+    const controlName = event.target.name;
+
+    const control = this.editCourseForm.get(controlName) as FormControl;
+
+    if (control) {
+      console.log(control);
+
+
+      if (control.value == '') {
+        // If input becomes empty, remove the control from the form array
+        this.removeControlByName(this.editCourseForm, controlName);
+      }
+    } else {
+      console.error(`${controlName} is not a FormArray.`);
     }
   }
+
+  removeControlByName(formGroup: FormGroup, controlName: string): void {
+    ;
+    if (formGroup.contains(controlName)) {
+      console.log("try remove", controlName);
+
+      formGroup.removeControl(controlName);
+      console.log("form", formGroup);
+
+    } else {
+      console.error(`Control with name ${controlName} not found in FormGroup.`);
+    }
+  }
+
 }

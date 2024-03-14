@@ -37,7 +37,7 @@ export class SmallCourseDetailsComponent {
     }
   }
   showAllDetails() {
- 
+
     this._route.navigate([`/course/${this.myCourse?.id}`]);
   }
 }

@@ -8,7 +8,6 @@ enum Study {
 export class Course {
 
     id: Number;
-    kode: Number;
     name: String;
     category: Category;
     countOfLessons: Number;

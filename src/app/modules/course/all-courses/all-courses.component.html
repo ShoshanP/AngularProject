@@ -1,14 +1,11 @@
-
 <div style="display: flex; justify-content: center;">
     <mat-form-field class="example-full-width">
         <mat-label>search</mat-label>
         <input matInput [(ngModel)]="searchText" (input)="onSearchInputChange()">
-        
     </mat-form-field>
 </div>
 <mat-grid-list cols="2" rowHeight="3:2">
     <mat-grid-tile *ngFor="let course of filtercourses">
-        <app-small-course-details [myCourse]="course"></app-small-course-details> 
+        <app-small-course-details [myCourse]="course"></app-small-course-details>
     </mat-grid-tile>
-   
-  </mat-grid-list>
+</mat-grid-list>

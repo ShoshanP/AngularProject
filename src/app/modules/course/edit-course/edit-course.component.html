@@ -1,16 +1,5 @@
-<!-- <h2 mat-dialog-title>Hi {{data.name}}</h2>
-<mat-dialog-content>
-  <p>What's your favorite animal?</p>
-  <mat-form-field>
-    <mat-label>Favorite Animal</mat-label>
-    <input matInput [(ngModel)]="data">
-  </mat-form-field>
-</mat-dialog-content>
-<mat-dialog-actions>
-  <button mat-button (click)="onNoClick()">No Thanks</button>
-  <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Ok</button>
-</mat-dialog-actions> -->
-<form [formGroup]="editCourseForm" (submit)="editCourse()">
+
+<form *ngIf="isLecture" [formGroup]="editCourseForm" (submit)="editCourse()">
 
     <label>Course Name</label>
     <mat-form-field>
@@ -48,9 +37,10 @@
             (blur)="onInputBlur('syllabus', i)">
     </div> -->
     <div *ngFor="let str of data.myCourse.syllabus; let i = index">
-        <label for="input{{ i }}">String {{ i + 1 }}</label>
-        <input type="text" id="input{{ i }}" name="input{{ i }}" formControlName="input{{ i }}">
-      </div>
+        <label *ngIf="editCourseForm.contains('input'+i)" for="input{{ i }}">Subject {{ i + 1 }}</label>
+        <input *ngIf="editCourseForm.contains('input'+i)" type="text" id="input{{ i }}" name="input{{ i }}"
+            (input)="onInputBlur($event,i)" formControlName="input{{ i }}">
+    </div>
 
 
 

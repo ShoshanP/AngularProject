@@ -9,14 +9,18 @@ import { Category } from "../models/category.model";
 export class CourseService {
   private _base_url: string = 'https://localhost:7175/api/Course';
   getCourses(): Observable<Course[]> {
+    console.log("get course");
+    
     return this._http.get<Course[]>(this._base_url);
   }
 
   getCourseById(id): Observable<User> {
+    console.log("get course");
     return this._http.get<User>(`${this._base_url}/${id}`);
   }
 
   getCategories(): Observable<Category[]> {
+   
     return this._http.get<Category[]>(`${this._base_url}/categories`);
   }
 
