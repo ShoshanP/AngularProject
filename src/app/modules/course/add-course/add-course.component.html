@@ -1,1 +1,44 @@
-<p>add-course works!</p>
+<form [formGroup]="addCourseForm" (submit)="addCourse()">
+
+    <label>Course Name</label>
+    <mat-form-field>
+        <input matInput placeholder="Course Name" formControlName="name">
+    </mat-form-field>
+    
+    <label>Select course category</label>
+    <select formControlName="category">
+        <option [value]="category.id" *ngFor="let category of categories">
+            {{category.name}}
+        </option>
+    </select>
+
+
+    <label>Start Date</label>
+    <mat-form-field>
+        <input type="datetime-local" matInput placeholder="Start Date" formControlName="start">
+    </mat-form-field>
+
+
+
+    <label id="example-radio-group-label">The way of learning</label>
+    <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" formControlName="study">
+
+        <mat-radio-button *ngFor="let study of Study" class="example-radio-button"
+            [value]="study">{{study}}</mat-radio-button>
+
+    </mat-radio-group>
+
+   
+    <!-- <div *ngFor="let str of data.myCourse.syllabus; let i = index">
+        <label for="input{{ i }}">String {{ i + 1 }}</label>
+        <input type="text" id="input{{ i }}" name="input{{ i }}" formControlName="input{{ i }}">
+      </div> -->
+
+
+
+    <label>Link to an image</label>
+    <mat-form-field>
+        <input matInput placeholder="Image" formControlName="image">
+    </mat-form-field>
+    <button mat-raised-button color="primary" type="submit">Save</button>
+</form>

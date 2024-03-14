@@ -20,6 +20,11 @@ export class CourseService {
     return this._http.get<Category[]>(`${this._base_url}/categories`);
   }
 
+  changeCourse(course: Course, id:number):Observable<any>{
+    console.log("try to change",id,course);
+    return this._http.put<Course>(`${this._base_url}/${id}`,course);
+  }
+
   constructor(private _http: HttpClient) {
 
   }

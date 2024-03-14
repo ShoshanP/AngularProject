@@ -12,7 +12,7 @@ export class Course {
     name: String;
     category: Category;
     countOfLessons: Number;
-    startDate: String;
+    start: String;
     syllabusArr: String[];
     study: Study;
     image: String;
