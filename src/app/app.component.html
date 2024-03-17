@@ -7,8 +7,16 @@
      [active]="rla.isActive">
     {{ link.label }}
   </a>
+  <a mat-tab-link  (click)="logOut()"> 
+    Log Out
+  </a>
 </nav>
-<p>שלום {{currentUser?.name}}</p>
+<div *ngIf="currentUser; else guest">
+  {{ currentUser.name }}
+</div>
+<ng-template #guest>
+  אורח
+</ng-template>
 
 <router-outlet></router-outlet>
 

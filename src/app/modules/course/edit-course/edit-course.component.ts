@@ -21,6 +21,7 @@ export class EditCourseComponent {
   editCourseForm: FormGroup;
   Study = Object.keys(Study).filter(k => typeof Study[k as any] === 'number');
   syllabusControls; // Add syllabusControls variable
+  isLecture:boolean=false;
 
   constructor(
     private _route: Router,
@@ -72,6 +73,10 @@ export class EditCourseComponent {
     }, err => {
       console.error(err);
     });
+
+    if(localStorage.getItem('isLecture') !== null) {
+      this.isLecture=true;
+    }
   }
 
   get syllabus() {

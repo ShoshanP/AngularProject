@@ -10,6 +10,7 @@ export class LectureService {
         return this._httpClient.get<Lecture[]>('https://localhost:7175/api/Lecturer');
     }
     IsLecture(user :User): boolean{
+        
       let lect =  this.lectures.find(l=>user.name==l.name&&user.mail==l.mail&&user.password==l.password);
       console.log("lectures",this.lectures);
       console.log("user",user);
